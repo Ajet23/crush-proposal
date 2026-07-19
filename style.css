@@ -559,6 +559,30 @@ html {
   color: var(--text-dark);
 }
 
+.success-note {
+  background: rgba(255, 77, 109, 0.05);
+  border: 1px solid rgba(255, 77, 109, 0.15);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  margin: 0 0 24px 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-dark);
+  text-align: left;
+}
+
+.success-note .note-text {
+  font-weight: 500;
+}
+
+.success-note .signature {
+  font-family: var(--font-handwriting);
+  font-size: 1.25rem;
+  color: var(--primary-color);
+  text-align: right;
+  margin-top: 8px;
+}
+
 .success-actions {
   display: flex;
   flex-direction: column;
