@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will You Go Out With Me? 💖</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Pacifico&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-default">
+  
+  <!-- Floating Hearts Background Container -->
+  <div class="floating-hearts-container" id="heartsContainer"></div>
+
+  <!-- Header Actions (History Button) -->
+  <header class="app-header">
+    <button id="viewHistoryBtn" class="icon-btn" title="View History">
+      <i class="fa-solid fa-clock-rotate-left"></i>
+    </button>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-container">
+    
+    <!-- SCREEN 1: THE PROPOSAL -->
+    <section id="proposalScreen" class="screen active">
+      <div class="card proposal-card">
+        <div class="illustration-container">
+          <!-- Cute SVG Animated Heart Bear -->
+          <svg class="proposal-illustration" viewBox="0 0 200 200" width="160" height="160">
+            <defs>
+              <linearGradient id="bearGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ffb3c6" />
+                <stop offset="100%" stop-color="#ff85a1" />
+              </linearGradient>
+            </defs>
+            <!-- Background glow -->
+            <circle cx="100" cy="100" r="80" fill="rgba(255, 182, 193, 0.2)" filter="blur(10px)" />
+            <!-- Bear body / Head -->
+            <circle cx="100" cy="105" r="45" fill="url(#bearGrad)" />
+            <!-- Left Ear -->
+            <circle cx="65" cy="70" r="16" fill="url(#bearGrad)" />
+            <circle cx="65" cy="70" r="9" fill="#ffe5ec" />
+            <!-- Right Ear -->
+            <circle cx="135" cy="70" r="16" fill="url(#bearGrad)" />
+            <circle cx="135" cy="70" r="9" fill="#ffe5ec" />
+            <!-- Snout -->
+            <ellipse cx="100" cy="115" rx="14" ry="10" fill="#fff" />
+            <polygon points="96,111 104,111 100,116" fill="#4a4e69" />
+            <!-- Eyes -->
+            <circle cx="85" cy="100" r="4" fill="#4a4e69" />
+            <circle cx="115" cy="100" r="4" fill="#4a4e69" />
+            <!-- Cheeks -->
+            <circle cx="77" cy="108" r="5" fill="#ff4d6d" opacity="0.6" />
+            <circle cx="123" cy="108" r="5" fill="#ff4d6d" opacity="0.6" />
+            <!-- Heart being held -->
+            <path class="animated-heart" d="M 100 135 C 80 110, 65 125, 100 155 C 135 125, 120 110, 100 135" fill="#ff4d6d" />
+          </svg>
+        </div>
+        
+        <h1 class="proposal-title">Hey! Will you go out with me? 💖</h1>
+        <p class="proposal-subtitle">Please say yes... pretty please? 😊</p>
+
+        <div class="proposal-buttons">
+          <button id="yesBtn" class="btn btn-yes">Yes! 😍</button>
+          <button id="noBtn" class="btn btn-no">No ane option a ledu 😜</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 2: ACTIVITY SELECTION -->
+    <section id="activityScreen" class="screen">
+      <div class="card selection-card">
+        <h2 class="section-title">Yay! You said Yes! 🎉</h2>
+        <p class="section-subtitle">What would you like to do on our date? Choose one: 💖</p>
+        
+        <div class="activity-grid">
+          <!-- Badminton -->
+          <div class="activity-card" data-activity="badminton">
+            <div class="activity-icon-container">
+              <i class="fa-solid fa-table-tennis-paddle-ball activity-icon"></i>
+            </div>
+            <h3>Badminton</h3>
+            <p>A fun, active match together! 🏸</p>
+          </div>
+
+          <!-- Coffee -->
+          <div class="activity-card" data-activity="coffee">
+            <div class="activity-icon-container">
+              <i class="fa-solid fa-mug-hot activity-icon"></i>
+            </div>
+            <h3>Coffee</h3>
+            <p>Cozy talks & warm sips ☕</p>
+          </div>
+
+          <!-- Cycling -->
+          <div class="activity-card" data-activity="cycling">
+            <div class="activity-icon-container">
+              <i class="fa-solid fa-bicycle activity-icon"></i>
+            </div>
+            <h3>Cycling</h3>
+            <p>Riding with the cool wind 🚲</p>
+          </div>
+
+          <!-- Cafe -->
+          <div class="activity-card" data-activity="cafe">
+            <div class="activity-icon-container">
+              <i class="fa-solid fa-store activity-icon"></i>
+            </div>
+            <h3>Cafe</h3>
+            <p>Yummy pastries & cute aesthetics 🍰</p>
+          </div>
+
+          <!-- Rain Ride -->
+          <div class="activity-card" data-activity="rain_ride">
+            <div class="activity-icon-container">
+              <i class="fa-solid fa-cloud-showers-water activity-icon"></i>
+            </div>
+            <h3>Rain Ride</h3>
+            <p>Chasing raindrops together 🌧️</p>
+          </div>
+
+          <!-- Night Walk -->
+          <div class="activity-card" data-activity="night_walk">
+            <div class="activity-icon-container">
+              <i class="fa-solid fa-moon activity-icon"></i>
+            </div>
+            <h3>Night Walk</h3>
+            <p>Stargazing & long conversations 🌙</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 3: DATE-TIME SELECTOR -->
+    <section id="dateTimeScreen" class="screen">
+      <div class="card datetime-card">
+        <button id="backToActivities" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back</button>
+        <div class="selected-badge">
+          <i id="selectedActivityIcon" class="fa-solid"></i>
+          <span id="selectedActivityText"></span>
+        </div>
+        <h2 class="section-title">When are we going? 🗓️</h2>
+        <p class="section-subtitle">Select your preferred date and time for our date:</p>
+
+        <form id="dateTimeForm" class="datetime-form">
+          <div class="input-group">
+            <label for="dateInput"><i class="fa-regular fa-calendar-days"></i> Choose Date</label>
+            <input type="date" id="dateInput" required>
+          </div>
+          <div class="input-group">
+            <label for="timeInput"><i class="fa-regular fa-clock"></i> Choose Time</label>
+            <input type="time" id="timeInput" required>
+          </div>
+          <button type="submit" class="btn btn-confirm">Lock it in! 🔒💖</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- SCREEN 4: SUCCESS / CONFIRMATION -->
+    <section id="successScreen" class="screen">
+      <div class="card success-card">
+        <div class="success-icon-container">
+          <i class="fa-solid fa-heart-circle-check success-icon"></i>
+        </div>
+        <h2 class="section-title">It's a Date! 🎉</h2>
+        <p class="section-subtitle">We have successfully scheduled our sweet adventure!</p>
+
+        <div class="date-summary">
+          <div class="summary-item">
+            <span class="label">Activity:</span>
+            <span id="summaryActivity" class="value"></span>
+          </div>
+          <div class="summary-item">
+            <span class="label">Date:</span>
+            <span id="summaryDate" class="value"></span>
+          </div>
+          <div class="summary-item">
+            <span class="label">Time:</span>
+            <span id="summaryTime" class="value"></span>
+          </div>
+        </div>
+
+        <div class="success-actions">
+          <button id="shareWhatsappBtn" class="btn btn-whatsapp">
+            <i class="fa-brands fa-whatsapp"></i> Share details with him
+          </button>
+          <button id="restartBtn" class="btn btn-secondary">Create Another Date 💖</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 5: HISTORY DASHBOARD -->
+    <section id="historyScreen" class="screen">
+      <div class="card history-card">
+        <button id="closeHistoryBtn" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Proposal</button>
+        <h2 class="section-title"><i class="fa-solid fa-clock-rotate-left"></i> Proposal History</h2>
+        <p class="section-subtitle">Here are the dates that have been locked in:</p>
+
+        <div id="historyList" class="history-list">
+          <!-- Dinamically injected logs -->
+          <div class="no-history">
+            <i class="fa-solid fa-heart-crack"></i>
+            <p>No date history found yet. Make a proposal!</p>
+          </div>
+        </div>
+
+        <div class="history-footer">
+          <button id="clearHistoryBtn" class="btn btn-danger-outline">Clear History</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Notification Banner -->
+  <div id="notification" class="notification-toast"></div>
+
+  <!-- Custom JS -->
+  <script src="app.js"></script>
+</body>
+</html>

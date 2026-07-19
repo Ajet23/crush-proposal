@@ -1,0 +1,787 @@
+/* ==========================================
+   CSS RESET & VARIABLES
+   ========================================== */
+:root {
+  /* Cute Pastel Design System */
+  --bg-primary: #fff0f3;
+  --bg-gradient: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 100%);
+  --card-bg: rgba(255, 255, 255, 0.88);
+  --card-border: rgba(255, 255, 255, 0.4);
+  
+  --primary-color: #ff4d6d;
+  --primary-hover: #ff758f;
+  --secondary-color: #80ed99;
+  --secondary-hover: #57cc99;
+  
+  --text-dark: #3a0ca3;
+  --text-muted: #5c677d;
+  --text-light: #ffffff;
+  
+  --btn-no-bg: #e2eafc;
+  --btn-no-text: #591a80;
+  
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 10px 15px -3px rgba(255, 77, 109, 0.15), 0 4px 6px -2px rgba(255, 77, 109, 0.05);
+  --shadow-lg: 0 20px 25px -5px rgba(255, 77, 109, 0.2), 0 10px 10px -5px rgba(255, 77, 109, 0.04);
+  
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 30px;
+  
+  --font-main: 'Outfit', 'Nunito', sans-serif;
+  --font-handwriting: 'Pacifico', cursive;
+  
+  --transition-smooth: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --transition-bg: background 0.8s ease, background-color 0.8s ease;
+}
+
+/* ==========================================
+   THEMED BACKGROUNDS
+   ========================================== */
+body.theme-default {
+  background: var(--bg-gradient);
+}
+
+body.theme-badminton {
+  background: linear-gradient(135deg, #e8f5e9 0%, #a5d6a7 100%);
+  --primary-color: #2e7d32;
+  --primary-hover: #4caf50;
+  --text-dark: #1b5e20;
+}
+
+body.theme-coffee {
+  background: linear-gradient(135deg, #efebe9 0%, #d7ccc8 100%);
+  --primary-color: #5d4037;
+  --primary-hover: #795548;
+  --text-dark: #3e2723;
+}
+
+body.theme-cycling {
+  background: linear-gradient(135deg, #e1f5fe 0%, #81d4fa 100%);
+  --primary-color: #0288d1;
+  --primary-hover: #03a9f4;
+  --text-dark: #01579b;
+}
+
+body.theme-cafe {
+  background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+  --primary-color: #c2185b;
+  --primary-hover: #e91e63;
+  --text-dark: #880e4f;
+}
+
+body.theme-rain_ride {
+  background: linear-gradient(135deg, #eceff1 0%, #b0bec5 100%);
+  --primary-color: #37474f;
+  --primary-hover: #455a64;
+  --text-dark: #263238;
+}
+
+body.theme-night_walk {
+  background: linear-gradient(135deg, #2a1b3d 0%, #44318d 100%);
+  --primary-color: #ff85a1;
+  --primary-hover: #ffb3c6;
+  --text-dark: #ffe5ec;
+  --card-bg: rgba(26, 17, 37, 0.85);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --text-muted: #d6ccc2;
+  --btn-no-bg: #44318d;
+  --btn-no-text: #ffe5ec;
+}
+
+/* ==========================================
+   GLOBAL STYLES
+   ========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--text-dark);
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  position: relative;
+  transition: var(--transition-bg);
+}
+
+html {
+  height: -webkit-fill-available;
+}
+
+/* ==========================================
+   FLOATING HEARTS ANIMATION
+   ========================================== */
+.floating-hearts-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.heart-particle {
+  position: absolute;
+  bottom: -20px;
+  font-size: 20px;
+  color: var(--primary-color);
+  opacity: 0.6;
+  animation: floatUp 8s linear infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(0.6);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-105vh) rotate(360deg) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* ==========================================
+   APP HEADER & CONTROLS
+   ========================================== */
+.app-header {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+}
+
+.icon-btn {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--card-border);
+  color: var(--primary-color);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(8px);
+  transition: var(--transition-smooth);
+}
+
+.icon-btn:hover {
+  transform: scale(1.1) rotate(-15deg);
+  background: var(--text-light);
+  box-shadow: var(--shadow-md);
+}
+
+/* ==========================================
+   MAIN CARDS CONTAINER & SCREEN SYSTEM
+   ========================================== */
+.main-container {
+  width: 90%;
+  max-width: 480px;
+  z-index: 1;
+  padding: 10px 0;
+}
+
+.screen {
+  display: none;
+  opacity: 0;
+  transform: translateY(30px) scale(0.96);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.screen.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 30px 24px;
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ==========================================
+   SCREEN 1: PROPOSAL STYLES
+   ========================================== */
+.illustration-container {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.proposal-illustration {
+  animation: floatBear 4s ease-in-out infinite;
+}
+
+.animated-heart {
+  animation: pulseHeart 1.2s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+@keyframes floatBear {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulseHeart {
+  0% { transform: scale(0.9); }
+  100% { transform: scale(1.1); }
+}
+
+.proposal-title {
+  font-family: var(--font-handwriting);
+  font-size: 2.2rem;
+  line-height: 1.3;
+  margin-bottom: 12px;
+  color: var(--text-dark);
+}
+
+.proposal-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-bottom: 30px;
+  font-weight: 500;
+}
+
+.proposal-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dynamic Buttons */
+.btn {
+  font-family: var(--font-main);
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.btn-yes {
+  background: var(--primary-color);
+  color: var(--text-light);
+  padding: 16px 28px;
+  font-size: 1.2rem;
+  border-radius: var(--radius-md);
+  position: relative;
+  z-index: 2;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-yes:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-yes:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-no {
+  background: var(--btn-no-bg);
+  color: var(--btn-no-text);
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  border-radius: var(--radius-md);
+  border: 1px dashed rgba(0,0,0,0.1);
+  will-change: transform;
+}
+
+.btn-no:hover {
+  transform: scale(0.97);
+}
+
+.wiggle {
+  animation: wiggleAnim 0.3s ease-in-out;
+}
+
+@keyframes wiggleAnim {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+/* ==========================================
+   SCREEN 2: ACTIVITY GRID
+   ========================================== */
+.section-title {
+  font-family: var(--font-handwriting);
+  font-size: 2rem;
+  margin-bottom: 8px;
+  color: var(--text-dark);
+}
+
+.section-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.activity-card {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: var(--radius-md);
+  padding: 20px 12px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.activity-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  background: var(--text-light);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
+}
+
+.activity-icon-container {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  transition: var(--transition-smooth);
+}
+
+.activity-card:hover .activity-icon-container {
+  background: var(--primary-color);
+  color: var(--text-light);
+  transform: rotate(15deg);
+}
+
+.activity-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+.activity-card p {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+/* ==========================================
+   SCREEN 3: DATE-TIME PICKER
+   ========================================== */
+.back-btn {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: none;
+  border: none;
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: var(--transition-smooth);
+}
+
+.back-btn:hover {
+  color: var(--primary-hover);
+  transform: translateX(-3px);
+}
+
+.selected-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-primary);
+  color: var(--primary-color);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin: 15px 0 10px 0;
+  border: 1px solid rgba(255, 77, 109, 0.2);
+}
+
+.datetime-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.input-group input {
+  font-family: var(--font-main);
+  font-size: 1rem;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-dark);
+  outline: none;
+  transition: var(--transition-smooth);
+  width: 100%;
+}
+
+.input-group input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(255, 77, 109, 0.15);
+}
+
+.btn-confirm {
+  background: var(--primary-color);
+  color: var(--text-light);
+  padding: 16px;
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+.btn-confirm:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ==========================================
+   SCREEN 4: SUCCESS / CONFIRMATION
+   ========================================== */
+.success-icon-container {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(128, 237, 153, 0.15);
+  color: #2d6a4f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  margin: 0 auto 20px auto;
+  animation: bounceCheck 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite alternate;
+}
+
+@keyframes bounceCheck {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-8px); }
+}
+
+.date-summary {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px dashed rgba(255, 77, 109, 0.3);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin: 24px 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.summary-item .label {
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.summary-item .value {
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.success-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-whatsapp {
+  background: #25d366;
+  color: var(--text-light);
+  padding: 16px;
+  font-size: 1.05rem;
+}
+
+.btn-whatsapp:hover {
+  background: #20ba5a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(37, 211, 102, 0.2);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  padding: 12px;
+  font-size: 0.9rem;
+  box-shadow: none;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 77, 109, 0.05);
+}
+
+/* ==========================================
+   SCREEN 5: HISTORY STYLES
+   ========================================== */
+.history-list {
+  max-height: 350px;
+  overflow-y: auto;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 4px;
+}
+
+/* Custom scrollbar */
+.history-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.history-list::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.02);
+  border-radius: 10px;
+}
+
+.history-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 77, 109, 0.2);
+  border-radius: 10px;
+}
+
+.history-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 77, 109, 0.4);
+}
+
+.no-history {
+  padding: 40px 0;
+  color: var(--text-muted);
+}
+
+.no-history i {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  opacity: 0.4;
+}
+
+.no-history p {
+  font-size: 0.9rem;
+}
+
+.history-item {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.history-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-item-activity {
+  font-weight: 800;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.history-item-time {
+  font-size: 0.85rem;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.history-item-date {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.history-item-created {
+  font-size: 0.7rem;
+  color: rgba(0,0,0,0.3);
+  text-align: right;
+  margin-top: 4px;
+}
+
+.delete-history-item-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.85rem;
+  opacity: 0.6;
+  transition: var(--transition-smooth);
+}
+
+.delete-history-item-btn:hover {
+  color: #e63946;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.history-footer {
+  margin-top: 15px;
+}
+
+.btn-danger-outline {
+  background: transparent;
+  color: #e63946;
+  border: 1px solid #e63946;
+  padding: 10px;
+  font-size: 0.85rem;
+  border-radius: var(--radius-sm);
+  width: auto;
+}
+
+.btn-danger-outline:hover {
+  background: rgba(230, 57, 70, 0.05);
+}
+
+/* ==========================================
+   TOAST NOTIFICATION
+   ========================================== */
+.notification-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--text-dark);
+  color: var(--text-light);
+  padding: 12px 24px;
+  border-radius: 100px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.25), opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.notification-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ==========================================
+   LAPTOP / TABLET RESPONSIVENESS
+   ========================================== */
+@media (min-width: 768px) {
+  .main-container {
+    max-width: 500px;
+  }
+  
+  .card {
+    padding: 40px 36px;
+  }
+  
+  .proposal-title {
+    font-size: 2.5rem;
+  }
+
+  .proposal-buttons {
+    flex-direction: row;
+    gap: 20px;
+  }
+  
+  .btn-yes {
+    width: auto;
+    flex: 1;
+  }
+  
+  .btn-no {
+    width: auto;
+    flex: 1;
+  }
+}
